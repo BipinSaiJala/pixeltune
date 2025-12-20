@@ -16,7 +16,7 @@ jobs:
         run: npm install
 
       - name: artifacts
-        uses: actions/artifacts-upload@v4
+        uses: actions/upload-artifacts@v4
         with:
           name: test-files
-          path: node-modules
+          path: node-modules/
