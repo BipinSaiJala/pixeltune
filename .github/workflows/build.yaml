@@ -1,13 +1,16 @@
 name: workflow 
 on: 
   push:
-    branch:   
+    branches:   
     - master
     - feature
 jobs:
-  unit testing:
+  unittesting:
     runs-on: ubuntu-latest
 
     steps:
+      - name: git checkout
+        uses: actions/checkout@v4
+
       - name: unit testing
         run: npm install
