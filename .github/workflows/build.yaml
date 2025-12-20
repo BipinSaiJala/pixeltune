@@ -14,3 +14,9 @@ jobs:
 
       - name: unit testing
         run: npm install
+
+      - name: artifacts
+        uses: actions/artifacts-upload@v4
+        with:
+          name: test-files
+          path: ./node-module
