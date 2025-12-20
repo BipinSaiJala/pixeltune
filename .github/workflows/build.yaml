@@ -5,3 +5,9 @@ on:
     - master
     - feature
 jobs:
+  unit testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: unit testing
+        run: npm install
