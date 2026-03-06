@@ -8,8 +8,8 @@ jobs:
     steps:
 
       - name: checkout
-        uses: action/checkout@v4
-        
+        uses: actions/checkout@v4
+
       - name: list the files
         run: ls
 
@@ -20,6 +20,7 @@ jobs:
 
       - name: open files
         run: |
+          chmod +x .github/workflows/script.sh
           .github/workflows/script.sh
 
 
