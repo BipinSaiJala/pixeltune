@@ -16,8 +16,8 @@ jobs:
 
       - name: open files
         run: |
-          grep -i "deepu.txt" deepu
-          cat deepu.txt
+          ./script.sh
+          
 
 
 
