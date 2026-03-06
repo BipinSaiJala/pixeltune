@@ -9,5 +9,15 @@ jobs:
       - name: list the files
         run: ls
 
+      - name: create the files
+        run: |
+          touch deepu.txt
+          echo "hello deepu" > deepu.txt
+
+      - name: open files
+        run: |
+          grip -i deepu.txt
+          cat deepu.txt
+
 
 
