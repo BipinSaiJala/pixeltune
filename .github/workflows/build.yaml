@@ -1,22 +1,13 @@
-name: workflow 
+name: first workflow
 on: 
-  push:
-    branches:   
-    - master
-    - feature
+  - push
+
 jobs:
-  unittesting:
-    runs-on: ubuntu-latest
-
+  practice:
+    runs-on: Ubuntu
     steps:
-      - name: git checkout
-        uses: actions/checkout@v4
+      - name: list the files
+        run: ls
 
-      - name: unit testing
-        run: npm install
 
-      - name: artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-files
-          path: node-modules/
+
