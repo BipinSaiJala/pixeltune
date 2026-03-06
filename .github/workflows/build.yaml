@@ -16,7 +16,7 @@ jobs:
 
       - name: open files
         run: |
-          grip -i deepu.txt
+          grep -i deepu.txt
           cat deepu.txt
 
 
