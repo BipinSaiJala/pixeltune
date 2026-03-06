@@ -4,7 +4,7 @@ on:
 
 jobs:
   practice:
-    runs-on: Ubuntu
+    runs-on: ubuntu-latest
     steps:
       - name: list the files
         run: ls
