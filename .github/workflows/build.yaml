@@ -6,6 +6,10 @@ jobs:
   practice:
     runs-on: ubuntu-latest
     steps:
+
+      - name: checkout
+        uses: action/checkout@v4
+        
       - name: list the files
         run: ls
 
@@ -16,8 +20,8 @@ jobs:
 
       - name: open files
         run: |
-          ./script.sh
-          
+          .github/workflows/script.sh
+
 
 
 
