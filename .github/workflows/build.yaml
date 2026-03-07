@@ -3,7 +3,11 @@ on:
   - push
 
 jobs:
+
   upload:
+    env:
+      NAME: Deepu
+      OTHER: Kanny
     runs-on: ubuntu-latest
     steps:
 
@@ -29,6 +33,9 @@ jobs:
         run: |
           chmod +x .github/workflows/script.sh
           .github/workflows/script.sh
+
+      - name: Testing ENV
+        run: echo "${{ env.OTHER }} love ${{ env.NAME }}"
 
 
   download:
