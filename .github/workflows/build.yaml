@@ -5,9 +5,7 @@ on:
 jobs:
 
   upload:
-    env:
-      NAME: Deepu
-      OTHER: Kanny
+    
     runs-on: ubuntu-latest
     steps:
 
@@ -35,7 +33,7 @@ jobs:
           .github/workflows/script.sh
 
       - name: Testing ENV
-        run: echo "${{ env.OTHER }} love ${{ env.NAME }}"
+        run: echo "${{ vars.OTHER }} love ${{ secrets.NAME }}"
 
 
   download:
