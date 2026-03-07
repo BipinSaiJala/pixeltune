@@ -3,7 +3,7 @@ on:
   - push
 
 jobs:
-  practice:
+  upload:
     runs-on: ubuntu-latest
     steps:
 
@@ -18,10 +18,29 @@ jobs:
           touch deepu.txt
           echo "hello deepu" > deepu.txt
 
-      - name: open files
+      - name: upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+           name: kanny
+           path: deepu.txt
+
+
+      - name: run script files
         run: |
           chmod +x .github/workflows/script.sh
           .github/workflows/script.sh
+
+
+  download:
+    needs: upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: kanny
+
+  
 
 
 
