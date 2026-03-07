@@ -19,7 +19,7 @@ jobs:
           echo "hello deepu" > deepu.txt
 
       - name: upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
            name: kanny
            path: deepu.txt
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: kanny
 
