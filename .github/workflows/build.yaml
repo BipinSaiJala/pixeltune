@@ -1,52 +1,29 @@
-name: first workflow
+name: pixeltune workflow
+
 on: 
   - push
 
 jobs:
-
-  upload:
-    
+  unittesting:
     runs-on: ubuntu-latest
+
     steps:
-
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: list the files
-        run: ls
+      - name: node setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-      - name: create the files
-        run: |
-          touch deepu.txt
-          echo "hello deepu" > deepu.txt
+      - name: install dependences
+        run: npm install
+
+      - name: build application
+        run: npm run build
 
       - name: upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifacts@v4
         with:
-           name: kanny
-           path: deepu.txt
-
-
-      - name: run script files
-        run: |
-          chmod +x .github/workflows/script.sh
-          .github/workflows/script.sh
-
-      - name: Testing ENV
-        run: echo "${{ vars.OTHER }} love ${{ secrets.NAME }}"
-
-
-  download:
-    needs: upload
-    runs-on: ubuntu-latest
-    steps:
-      - name: download Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: kanny
-
-  
-
-
-
-
+          name: artifacts-build
+          path: dist
