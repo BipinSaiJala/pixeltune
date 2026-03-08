@@ -5,7 +5,12 @@ on:
 
 jobs:
   unittesting:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [18, 19, 20]
+
+    runs-on: ${{matrix.os}}
 
     steps:
       - name: checkout
@@ -14,7 +19,7 @@ jobs:
       - name: node setup
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: ${{matrix.node-version}}
 
       - name: install dependences
         run: npm install
