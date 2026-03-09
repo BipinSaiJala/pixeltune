@@ -32,3 +32,8 @@ jobs:
         with:
           name: artifacts-build-${{matrix.node-version}}
           path: dist
+
+      - name: test the application
+        run: npm test
+        continue-on-error: true
+        
