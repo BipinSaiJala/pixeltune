@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [18, 19, 20]
+        node-version: [18]
 
     runs-on: ${{matrix.os}}
 
@@ -42,3 +42,15 @@ jobs:
       - name: test the application
         run: npm test
         continue-on-error: true
+
+
+  Docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: docker loging
+        uses: docker/login-action@v4
+        with:
+          username: ${{ vars.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
