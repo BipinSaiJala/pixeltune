@@ -52,7 +52,7 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@v3
-        
+
       - name: docker loging
         uses: docker/login-action@v4
         with:
@@ -80,5 +80,15 @@ jobs:
       - name: Test application
         run: |
             curl -f http://127.0.0.1:8080
+
+      - name: Tag Docker Image
+        run: |
+              docker tag pixeltune:test ${{ vars.DOCKER_USERNAME }}/pixeltune:latest
+              docker tag pixeltune:test ${{ vars.DOCKER_USERNAME }}/pixeltune:${{ github.sha }}
+
+      - name: Push Docker Image
+        run: |
+          docker push ${{ vars.DOCKER_USERNAME }}/pixeltune:latest
+          docker push ${{ vars.DOCKER_USERNAME }}/pixeltune:${{ github.sha }}
 
 
