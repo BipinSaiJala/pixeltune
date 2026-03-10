@@ -46,6 +46,7 @@ jobs:
 
   Docker:
     runs-on: ubuntu-latest
+    needs: unittesting
 
     steps:
       - name: docker loging
