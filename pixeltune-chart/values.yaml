@@ -1,0 +1,10 @@
+metadata:
+  name: pixeltune
+
+containers:
+  name: pixeltune
+  image: pixeltune:latest
+  metadata:
+    name: pixeltune
+    labels: 
+      app: front-end

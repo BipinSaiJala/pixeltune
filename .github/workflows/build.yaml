@@ -43,6 +43,12 @@ jobs:
         run: npm test
         continue-on-error: true
 
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
 
   unittesting-with_container:
       runs-on: ubuntu-latest
@@ -91,7 +97,7 @@ jobs:
 
   Docker:
     runs-on: ubuntu-latest
-    needs: unittesting
+    needs: unittesting-with_container
     concurrency:
       group: prod 
       cancel-in-progress: true
@@ -138,5 +144,8 @@ jobs:
         run: |
           docker push ${{ vars.DOCKER_USERNAME }}/pixeltune:latest
           docker push ${{ vars.DOCKER_USERNAME }}/pixeltune:${{ github.sha }}
+
+
+
 
 
